@@ -1,0 +1,215 @@
+main{
+    background:#EEF3FC;
+}
+#aside-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100vh;
+    background: #fff;
+    transition: 0.3s ease-in-out all;
+    z-index: 999;
+    box-shadow: rgba(0, 59, 178, 0.2) 0px 5px 20px;
+}
+#aside-container .logo-wrap{
+    display: flex;
+    padding: 40px 20px 20px 20px;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+#aside-container .logo-wrap > .logo{
+    display: none;
+}
+#aside-container .logo-wrap > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: #EEF3FC;
+    border:1px solid #e1e9f9;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out all;
+}
+#aside-container .logo-wrap > button > svg{
+    height: 20px;
+    color: #333;
+}
+#aside-container .logo-wrap > button:hover{
+    background: #d4e0f7;
+}
+#contents-container{
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 100px;
+    box-sizing: border-box;
+    transition: 0.3s ease-in-out all;
+}
+#aside-container .menus-wrap > ul{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+}
+#aside-container .menus-wrap > ul > li{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+#aside-container .menus-wrap > ul > li:last-child{
+    margin-bottom: 0px;
+}
+#aside-container .menus-wrap > ul > li > a{
+    position: relative;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e1e9f9;
+    box-sizing: border-box;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #d4e0f7;
+}
+#aside-container .menus-wrap > ul > li > a > svg{
+    color: #d4e0f7;
+    width: 24px;
+    height: 24px;
+}
+#aside-container .menus-wrap > ul > li > a > span{
+    width: 0;
+    transition: 0.3s ease-in-out all;
+    overflow: hidden;
+
+}
+#aside-container .menus-wrap > ul > li.on > a,
+#aside-container .menus-wrap > ul > li:hover > a
+{
+    background: #003BB2;
+    border: 0;
+    box-shadow: rgba(0, 59, 178, 0.1) 0px 5px 5px;
+}
+#aside-container .menus-wrap > ul > li.on > a > svg,
+#aside-container .menus-wrap > ul > li:hover > a > svg
+{
+    color: #fff;
+}
+#aside-container .copy-wrap{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+}
+#aside-container .copy-wrap > .copy{
+    text-align: center;
+    color: #7ea3e7;
+    font-size: 12px;
+}
+#aside-container .menus-wrap > ul > li > a > span{
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    text-align: left;
+    display: none;
+    background: #003BB2;
+    color: #fff;
+    width: auto;
+    z-index: 55;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    transform: translateY(-50%);
+    min-width: 100px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.25em;
+    font-weight: bold;
+}
+#aside-container .menus-wrap > ul > li > a:hover > span{
+   display: inline-block;
+}
+
+/*사이드 메뉴열림*/
+main.asideOn #aside-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    overflow: hidden;
+}
+main.asideOn #aside-container .logo-wrap{
+    display: flex;
+    padding: 40px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+main.asideOn #aside-container .logo-wrap > .logo{
+    display: block;
+}
+main.asideOn #contents-container{
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 300px;
+    box-sizing: border-box;
+}
+main.asideOn #aside-container .menus-wrap > ul{
+    padding-top: 0;
+}
+main.asideOn #aside-container .menus-wrap > ul > li{
+    justify-content: flex-start;
+}
+main.asideOn #aside-container .menus-wrap > ul > li > a{
+    width: auto;
+    height: 50px;
+    justify-content: flex-start;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-weight: bold;
+    position: relative;
+    width: auto;
+
+}
+main.asideOn #aside-container .menus-wrap > ul > li > a > span{
+    display: block;
+    margin-left: 20px;
+    font-size: 20px;
+    width: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    background: none;
+    color: inherit;
+}
+main.asideOn #aside-container .menus-wrap > ul > li.on > a,
+main.asideOn #aside-container .menus-wrap > ul > li:hover > a
+{
+    border: 0;
+    /* box-shadow:none; */
+    color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+main.asideOn #aside-container .menus-wrap > ul > li.on > a > svg,
+main.asideOn #aside-container .menus-wrap > ul > li:hover > a > svg
+{
+    color: #fff;
+}
+
+
+/*컨텐츠*/
+#contents-container > .contents-inner{
+    padding: 40px;
+}
+#contents-container .con-box{
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    background: #fff;
+}
+
