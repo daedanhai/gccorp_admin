@@ -30,9 +30,11 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "styled-components": "^5.3.9",
     "typescript": "5.0.3"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.26",
     "redux-logger": "^3.0.6"
   }
 }

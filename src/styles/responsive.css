@@ -1,0 +1,22 @@
+
+/* PC 화면 */
+@media screen and (min-width: 768px) {
+    /*[디바이스별 표시]*/
+    .m-only{
+        display: none;
+    }
+    .pc-only{
+        display: block;
+    }
+    /**/
+    aside{
+        display:block !important;
+        width: 300px;
+        transform:translateX(0) !important;
+        
+    }
+    #contnets-container{
+        position: relative;
+        padding-left: 300px;
+    }
+}

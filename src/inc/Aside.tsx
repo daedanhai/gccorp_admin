@@ -1,42 +1,49 @@
-import Image from "next/image";
-import Link from 'next/link';
+import React, { useState, useContext, useRef, useEffect } from "react";
+import AppContext from "@/context/AppContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faArrowLeft, faHouse , faIcons, faBell , faMessage} from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-export default function Aside(){
-    return(
-        // <aside id='aside-container'>
-        //     <div className='aside-inner'>
-            
-        //     <div className='logo-wrap'>
-        //         <h1 className='logo'>
-        //         <Link href="/"><Image src={asideState === true ? '/img/logo_type01.svg' : '/img/logo_type02.svg'} width={150} height={40} alt="대단한컴퍼니"/></Link>
-        //         </h1>
+export default function Aside() {
 
-        //         <button onClick={asideBtnClick}>
-        //         <FontAwesomeIcon icon={ asideState === true ? faArrowLeft : faBars }/>
-        //         </button>
-                
-        //     </div>
+  const { asideisOpen, setAsideisOpen , mobileCheck } = useContext(AppContext);
 
-        //     <div className='menus-wrap'>
-        //         <ul>
-        //         <li className='on'><Link href='/'><FontAwesomeIcon icon={ faHouse }/> <span>Home</span></Link></li>
-        //         <li><Link href='/'><FontAwesomeIcon icon={ faIcons }/> <span>Portfolio</span></Link></li>
-        //         <li><Link href='/'><FontAwesomeIcon icon={ faBell }/> <span>Notice</span></Link></li>
-        //         <li><Link href='/'><FontAwesomeIcon icon={ faMessage }/> <span>Contact</span></Link></li>
-        //         </ul>
-        //     </div>
+  const asideHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAsideisOpen(!asideisOpen);
+    document.body.classList.remove("no-scroll");
+  };
 
-        //     <div className='copy-wrap'>
-        //         {
-        //         asideState === true ?  <p className='copy'>© 2023. 대단한컴퍼니 Inc. all rights reserved.</p> : <p className='copy'>© GC Inc.</p>
-        //         }
-                
-        //     </div>
+  const asideRef = useRef<HTMLDivElement>(null);
 
-        //     </div>
-        // </aside>
-        <p>ddasdasdd</p>
-    )
+  const handleClickOutside = (e: MouseEvent) => {
+    if (asideRef.current && !asideRef.current.contains(e.target as Node)) {
+      setAsideisOpen(false);
+    }
+  };
+
+  const ddd = (e: MouseEvent) => {
+    console.log('ddd')
+  }
+
+  useEffect(() => {
+    if (asideisOpen) {
+      document.body.classList.add("no-scroll");
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.body.classList.remove("no-scroll");
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.classList.remove("no-scroll");
+    };
+  }, [asideisOpen]);
+
+  return (
+    <aside ref={asideRef} className={ asideisOpen === true ? "open" : "" }>
+      <h2>어사이드</h2>
+      <button onClick={ asideHandler }>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+    </aside>
+  );
 }

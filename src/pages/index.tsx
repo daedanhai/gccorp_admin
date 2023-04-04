@@ -1,15 +1,10 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from 'next/link';
+import Layout from '@/inc/Layout';
+import Dashboard from '@/contents/Dashboard';
+import ResponsiveObserve from '@/utill/ResponsiveObserve';
 
 export default function Home() {
-  const [asideState, setAsideState] = React.useState(true);
-
-  function asideBtnClick() {
-    setAsideState(!asideState);
-  }
-
   return (
     <>
       <Head>
@@ -18,23 +13,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={asideState === true ? 'asideOn' : ''}>
-
-        {/* Aside */}
-
-        {/* Contents */}
-        <div id='contents-container'>
-          <div className='contents-inner'>
-            <div className='title-wrap'>
-              <h2>홈</h2>
-              <p className='navi'>홈</p>
-            </div>
-            <div className='con-box'></div>
-          </div>
-        </div>
-
-      </main>
-      
+     
+      <Layout>
+        <Dashboard/>
+      </Layout>
     </>
   )
 }

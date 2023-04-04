@@ -1,0 +1,79 @@
+/***** 모바일 화면 ******/
+/*** [BODY] ***/
+body.no-scroll{
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease-in-out all;
+}
+body.no-scroll::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+}
+/*** [어사이드] ***/
+aside{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 500px;
+    overflow: hidden;
+    background: #fff;
+    min-height:100vh;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: 0.3s ease-in-out all;
+    border-right: 1px solid #f4f4f4;
+    box-sizing: border-box;
+}
+aside.open{
+    transform: translateX(0);
+    box-shadow: rgba(100, 100, 111, 1) 0px 7px 29px 0px;
+}
+#view{
+    position: relative;
+    min-height: 100vh;
+    background:#f6f9fc;
+    
+}
+/*** [헤더] ***/
+header{
+    position:sticky;
+    top:0;
+    display:flex;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background: #fff;
+    box-shadow: rgba(100, 100, 111, 0.05) 0px 7px 29px 0px;
+    z-index: 998;
+}
+/*** [컨텐츠컨테이너] ***/
+#contnets-container{
+    position: relative;
+    transition: 0.3s ease-in-out all;
+}
+/*** [컨텐츠] ***/
+#contents{
+    position: relative;
+    padding: 40px 20px;
+    min-height: 200vh;
+}
+/*** [디바이스별 표시] ***/
+.m-only{
+    display: block;
+}
+.pc-only{
+    display: none;
+}

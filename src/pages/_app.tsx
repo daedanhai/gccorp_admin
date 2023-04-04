@@ -1,20 +1,33 @@
 //pages/_app.tsx
-import '@/styles/globals.css'
-import '@/styles/common.css'
+
+import React,{useState} from 'react'
+
+//css
+import '@/styles/reset.css'
+import '@/styles/style.css'
+import '@/styles/responsive.css'
 import type { AppProps } from 'next/app'
-
-
+import AppContext from '@/context/AppContext';
 //FontAwsome
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+
+import ResponsiveObserve from '@/utill/ResponsiveObserve' 
+
 config.autoAddCss = false
 
-import { wrapper } from "../store/index";
-
 function MyApp({ Component, pageProps }: AppProps) {
+
+  const [asideisOpen, setAsideisOpen] = useState(false);
+  const [mobileCheck, setMobileCheck] = useState(false);
+
   return (
-    <Component {...pageProps} />
-  );
+    <AppContext.Provider value={{asideisOpen, setAsideisOpen, mobileCheck, setMobileCheck}}>
+      <ResponsiveObserve />
+      <Component {...pageProps} />
+    </AppContext.Provider>
+  )
+
 }
 
-export default wrapper.withRedux(MyApp);
+export default MyApp;
