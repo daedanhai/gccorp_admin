@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import Aside from './Aside';
 import Header from '@/inc/Header';
-import ResponsiveObserve from '@/utill/ResponsiveObserve';
 
 type LayoutProps = {
   children: ReactNode;
@@ -10,7 +9,6 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <ResponsiveObserve />
       <div id='view'>
         <Aside />
         <div id='contnets-container'>

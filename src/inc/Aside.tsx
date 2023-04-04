@@ -7,10 +7,10 @@ export default function Aside() {
 
   const { asideisOpen, setAsideisOpen , mobileCheck } = useContext(AppContext);
 
-  const asideHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setAsideisOpen(!asideisOpen);
-    document.body.classList.remove("no-scroll");
-  };
+//   const asideHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+//     setAsideisOpen(!asideisOpen);
+//     document.body.classList.remove("no-scroll");
+//   };
 
   const asideRef = useRef<HTMLDivElement>(null);
 
@@ -20,14 +20,12 @@ export default function Aside() {
     }
   };
 
-  const ddd = (e: MouseEvent) => {
-    console.log('ddd')
-  }
-
   useEffect(() => {
     if (asideisOpen) {
-      document.body.classList.add("no-scroll");
-      document.addEventListener("mousedown", handleClickOutside);
+      if(mobileCheck){
+        document.body.classList.add("no-scroll");
+        document.addEventListener("mousedown", handleClickOutside);
+      }
     } else {
       document.body.classList.remove("no-scroll");
       document.removeEventListener("mousedown", handleClickOutside);
@@ -41,7 +39,7 @@ export default function Aside() {
   return (
     <aside ref={asideRef} className={ asideisOpen === true ? "open" : "" }>
       <h2>어사이드</h2>
-      <button onClick={ asideHandler }>
+      <button onClick={ () => setAsideisOpen(!asideisOpen) }>
         <FontAwesomeIcon icon={faBars} />
       </button>
     </aside>
