@@ -3,7 +3,7 @@
 body.no-scroll{
     position: relative;
     overflow: hidden;
-    transition: 0.3s ease-in-out all;
+    transition: 0.3s ease-in all;
 }
 body.no-scroll::after{
     content: '';
@@ -17,32 +17,133 @@ body.no-scroll::after{
     background: rgba(0,0,0,0.5);
     z-index: 998;
 }
-/*** [어사이드] ***/
-aside{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 80%;
-    max-width: 500px;
-    overflow: hidden;
-    background: #fff;
-    min-height:100vh;
-    z-index: 999;
-    transform: translateX(-100%);
-    transition: 0.3s ease-in-out all;
-    border-right: 1px solid #f4f4f4;
-    box-sizing: border-box;
-}
-aside.open{
-    transform: translateX(0);
-    box-shadow: rgba(100, 100, 111, 1) 0px 7px 29px 0px;
-}
 #view{
     position: relative;
     min-height: 100vh;
     background:#f6f9fc;
-    
 }
+/*** [어사이드] ***/
+aside{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width:500px;
+    background: #fff;
+    min-height:100vh;
+    z-index: 999;
+    transition: 0.3s ease-in-out all;
+    border-right: 1px solid #f4f4f4;
+    box-sizing: border-box;
+}
+aside > .btn-toggle{
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+}
+aside > .btn-toggle > svg{
+    width: 30px;
+    height: 30px;
+    color: #333;
+}
+#view.aside-open aside{
+    left: 0;
+    box-shadow: rgba(100, 100, 111, 1) 0px 7px 29px 0px;
+}
+#view.aside-open aside > .btn-toggle{
+    display:block;
+}
+
+.aside-menus-container{
+    position: relative;
+    margin-top: 80px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.aside-menus-wrap{
+    position: relative;
+}
+.aside-menus-wrap > li{
+    margin-bottom: 20px;
+}
+.aside-menus-wrap > li > a{
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    transition: 0.3s ease-in-out all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.aside-menus-wrap > li > a::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: #003BB2;
+}
+.aside-menus-wrap > li > a > svg{
+    color: #e9e9e9;
+}
+.aside-menus-wrap > li > a > span{
+    margin-left: 10px;
+    color: #999;
+    font-size: 24px;
+    font-weight: bold;
+}
+.aside-menus-wrap > li > a:hover,
+.aside-menus-wrap > li > a.on
+{
+    padding-left: 20px;
+}
+.aside-menus-wrap > li > a:hover::after,
+.aside-menus-wrap > li > a.on::after
+{
+    height: 100%;
+}
+.aside-menus-wrap > li > a:hover > svg,
+.aside-menus-wrap > li > a:hover > span,
+.aside-menus-wrap > li > a.on > svg,
+.aside-menus-wrap > li > a.on > span
+{
+    color: #003BB2;
+}
+.aside-footer{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.aside-footer > .utills{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.aside-footer > .utills > li > button{
+    display: flex;
+    align-items: center;
+    background: #999;
+}
+.aside-footer > .utills > li > button > svg{
+    margin-right: 5px;
+}
+.aside-footer > .copy{
+    font-size: 12px;
+    letter-spacing: -0.025em;
+    color: #999;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 /*** [헤더] ***/
 header{
     position:sticky;
@@ -59,6 +160,39 @@ header{
     box-shadow: rgba(100, 100, 111, 0.05) 0px 7px 29px 0px;
     z-index: 998;
 }
+header > .left{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+header > .left > .btn-toggle{
+    width:40px;
+    height:40px;
+    border:1px solid #ededed;
+    border-radius:5px;
+    color:#333;
+    margin-right: 10px;
+}
+header > .left > .btn-toggle:hover{
+    background:#e9e9e9;
+}
+header .profile-wrap{
+    display: flex;
+    align-items: center;
+}
+header .profile-wrap > p {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+header .profile-wrap > .btn{
+    background: #e9e9e9;
+    color: #999;
+}
+header .profile-wrap > .btn:hover{
+    background: #d9d9d9;
+}
+
 /*** [컨텐츠컨테이너] ***/
 #contnets-container{
     position: relative;
@@ -76,4 +210,30 @@ header{
 }
 .pc-only{
     display: none;
+}
+/*** [버튼 스타일] ***/
+:root {
+    --primary-color: #003BB2;
+    --button-border-radius: 10px;
+}
+
+.btn{
+    background-color: #003BB2;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.btn.sm{
+    font-size: 12px;
+    height: 32px;
+}
+.btn.mid {
+    padding: 10px 10px;
+    font-size: 12px;
 }

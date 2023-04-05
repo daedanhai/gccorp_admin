@@ -2,17 +2,17 @@ import { useEffect, useContext } from 'react';
 import AppContext from '@/context/AppContext';
 
 const ResponsiveObserve = () => {
-  const { mobileCheck, setMobileCheck } = useContext(AppContext);
+  const { asideisOpen, setAsideisOpen, mobileCheck, setMobileCheck } = useContext(AppContext);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 780) {
+        setAsideisOpen(false);
         setMobileCheck(true);
-        console.log(mobileCheck)
       } else {
+        setAsideisOpen(false);
         setMobileCheck(false);
-        console.log(mobileCheck)
       }
     };
     window.addEventListener('resize', handleResize);
