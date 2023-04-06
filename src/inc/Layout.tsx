@@ -11,14 +11,14 @@ const Layout = ({ children }: LayoutProps) => {
   const { mobileCheck,asideisOpen } = useContext(AppContext);
   return (
     <>
-      <div id='view' className={asideisOpen ? 'aside-open' : ''}>
+      <div id='view' className={`${asideisOpen ? 'aside-open' : ''}${mobileCheck ? ' m-mod' : ' pc-mod'}`}>
         <Aside />
-        <div id='contnets-container'>
+        <main id='contnets-container'>
           <Header />
           <div id='contents'>
             { children }
           </div>
-        </div>  
+        </main>  
       </div>
     </>
     

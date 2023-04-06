@@ -23,7 +23,7 @@ export default function Header(){
                 <h1 className='logo'>
                     <Link href='/'>
                         {
-                            mobileCheck ? <Image src='./img/logo_type01.svg' width={120} height={60} alt="대단한컴퍼니"/> : <Image src='./img/logo_type01.svg' width={160} height={80} alt="대단한컴퍼니"/>
+                            mobileCheck ? <Image src='./img/logo_type02.svg' width={40} height={40} alt="대단한컴퍼니"/> : <Image src='./img/logo_type01.svg' width={160} height={80} alt="대단한컴퍼니"/>
                         }
                         
                     </Link>

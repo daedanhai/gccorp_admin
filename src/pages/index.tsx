@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
+  const asPath = router.asPath;
   useEffect(() => {
-    router.push('/home', undefined, { shallow: true })
-  }, [])
+    console.log(asPath)
+    router.push('/home')
+  }, []);
   return (
     <>
       <Head>

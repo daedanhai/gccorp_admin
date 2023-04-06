@@ -4,8 +4,11 @@ import React,{useState} from 'react'
 
 //css
 import '@/styles/reset.css'
-import '@/styles/style.css'
-import '@/styles/responsive.css'
+import '@/styles/common.scss'
+import '@/styles/style.scss';
+import '@/styles/pc_mod.scss'
+
+import Layout from '@/inc/Layout'
 import type { AppProps } from 'next/app'
 import AppContext from '@/context/AppContext';
 //FontAwsome
@@ -23,8 +26,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <AppContext.Provider value={{asideisOpen, setAsideisOpen, mobileCheck, setMobileCheck}}>
-      <ResponsiveObserve />
-      <Component {...pageProps} />
+      <Layout>
+        <ResponsiveObserve />
+        <Component {...pageProps} />
+      </Layout>
     </AppContext.Provider>
   )
 
